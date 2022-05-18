@@ -1,0 +1,16 @@
+.sidebarContainer {
+  width: 250px;
+  padding-top: 20px;
+  height: calc(100% - 250px);
+}
+.activeChip {
+  background-color: #fdcb6e;
+}
+.inActiveChip {
+  background-color: white;
+}
+
+.sidebarContainer div {
+  padding: 10px;
+  cursor: pointer;
+}

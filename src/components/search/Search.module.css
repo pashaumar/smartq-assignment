@@ -1,0 +1,14 @@
+.header {
+  background-color: #fdcb6e;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.searchInput {
+  background-color: #ffeaa7;
+  border: none;
+  padding: 10px 20px;
+  outline: none;
+  width: 450px;
+}
