@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Footer.module.css";
 
 function Footer(props) {
-  const { selectedFood, setDetails, activeRestaurant, handleFoodSelect } =
+  const { selectedFoodItems, setDetails, activeRestaurant, handleFoodSelect } =
     props;
 
   const handleAvailability = (available) => {
@@ -20,23 +20,30 @@ function Footer(props) {
 
   return (
     <div className={classes.footerContainer}>
-      <button disabled={selectedFood} onClick={() => handleAvailability(true)}>
+      <button
+        disabled={selectedFoodItems.length}
+        onClick={() => handleAvailability(true)}
+      >
         All Unavailable
       </button>
-      <button disabled={selectedFood} onClick={() => handleAvailability(false)}>
+      <button
+        disabled={selectedFoodItems.length}
+        onClick={() => handleAvailability(false)}
+      >
         All Available
       </button>
       <button
-        disabled={!selectedFood}
+        disabled={!selectedFoodItems.length}
         onClick={() => {
           setDetails((prevDetails) => {
             const itemAvailability = prevDetails[activeRestaurant].map(
               (detail) => {
-                if (detail.foodid === selectedFood.foodid) {
-                  return {
-                    ...detail,
-                    outofstock: !detail.outofstock,
-                  };
+                const isFoodItemSelected = selectedFoodItems.find(
+                  (item) => item.foodid === detail.foodid
+                );
+
+                if (isFoodItemSelected) {
+                  return isFoodItemSelected;
                 }
                 return detail;
               }
@@ -46,7 +53,7 @@ function Footer(props) {
               [`${activeRestaurant}`]: itemAvailability,
             };
           });
-          handleFoodSelect(null);
+          handleFoodSelect([], true);
         }}
       >
         Apply

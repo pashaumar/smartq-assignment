@@ -3,7 +3,7 @@ import classes from "./Food.module.css";
 import FoodChip from "./FoodChip";
 
 function Food(props) {
-  const { details, handleFoodSelect, selectedFood, searchKey } = props;
+  const { details, handleFoodSelect, selectedFoodItems, searchKey } = props;
   const searchedFood =
     details &&
     details.filter((detail) => {
@@ -20,7 +20,7 @@ function Food(props) {
             detail={detail}
             key={detail.foodid}
             handleFoodSelect={handleFoodSelect}
-            selectedFood={selectedFood}
+            selectedFoodItems={selectedFoodItems}
           />
         ))
       ) : (

@@ -4,7 +4,12 @@ import { data } from "../constant";
 import SidebarChip from "./SidebarChip";
 
 function Sidebar(props) {
-  const { getActiveRestaurant, handleFoodSelect, getSearchKey } = props;
+  const {
+    getActiveRestaurant,
+    handleFoodSelect,
+    getSearchKey,
+    activeRestaurant,
+  } = props;
   const [active, setActive] = useState("EATORAMA");
 
   useEffect(() => {
@@ -25,6 +30,7 @@ function Sidebar(props) {
           handleChangeRestaurant={handleChangeRestaurant}
           handleFoodSelect={handleFoodSelect}
           getSearchKey={getSearchKey}
+          activeRestaurant={activeRestaurant}
         />
       ))}
     </div>

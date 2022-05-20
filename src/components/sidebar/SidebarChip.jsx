@@ -8,14 +8,17 @@ function SidebarChip(props) {
     active,
     handleFoodSelect,
     getSearchKey,
+    activeRestaurant,
   } = props;
   return (
     <div
       className={active === name ? classes.activeChip : classes.inActiveChip}
       onClick={() => {
-        handleChangeRestaurant(name);
-        handleFoodSelect(null);
-        getSearchKey("");
+        if (activeRestaurant !== name) {
+          handleChangeRestaurant(name);
+          handleFoodSelect([], true);
+          getSearchKey("");
+        }
       }}
     >
       {name}
